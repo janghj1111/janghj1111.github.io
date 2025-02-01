@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Today Jang Learn",
   description: "배우거나 이뤘던 것들을 기록합니다",
+  base: '/', // github.io 형식이므로 '/'로 설정
   vite: {
     server: {
       port: 19999 // 원하는 포트 번호로 변경
