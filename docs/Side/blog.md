@@ -1,4 +1,7 @@
-# Markdown Extension Examples
+
+참고 블로그 : https://velog.io/@kang-bit/VitePress-Github-Pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EB%B0%B0%ED%8F%AC
+
+<!-- # Markdown Extension Examples
 
 제목 테스트
 
@@ -82,4 +85,4 @@ This is a details block.
 
 ## More
 
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown). -->

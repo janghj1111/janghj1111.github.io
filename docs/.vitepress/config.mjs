@@ -17,7 +17,7 @@ export default defineConfig({
      **********************************************/
     nav: [
       // { text: 'Backend', link: '/back/' },
-      // { text: 'Project', link: '/side/' },
+      { text: 'Project', link: '/Side/' },
       // { text: 'CodingTest', link: '/vue/' },
       { text: 'Frontend',
         items : [
@@ -72,7 +72,7 @@ export default defineConfig({
      **********************************************/
     sidebar: {
       /****** sample *******/ 
-      '/': [
+      '/sample/': [
         {
           text: '예시',
           collapsed: false,
@@ -103,6 +103,16 @@ export default defineConfig({
             },
           ]
         }
+      ],
+      /****** 사이드 프로젝트 기록용용 *******/ 
+      '/Side/': [
+        {
+          text: '개인 블로그',
+          collapsed: false,
+          items: [
+            { text: 'vitePress', link: './blog' },
+          ]
+        },
       ],
       /****** 공부 *******/ 
       '/Study/WebDev/': [
