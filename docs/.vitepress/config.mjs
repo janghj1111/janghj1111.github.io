@@ -1,11 +1,9 @@
 import { defineConfig } from 'vitepress'
-import theme from './theme'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Today Jang Learn",
   description: "배우거나 이뤘던 것들을 기록합니다",
-  theme,
   base: '/', // github.io 형식이므로 '/'로 설정
   vite: {
     server: {
