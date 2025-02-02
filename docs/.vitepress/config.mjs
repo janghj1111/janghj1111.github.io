@@ -1,13 +1,15 @@
 import { defineConfig } from 'vitepress'
+import theme from './theme'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Today Jang Learn",
   description: "배우거나 이뤘던 것들을 기록합니다",
+  theme,
   base: '/', // github.io 형식이므로 '/'로 설정
   vite: {
     server: {
-      port: 19999 // 원하는 포트 번호로 변경
+      port: 19999, // 원하는 포트 번호로 변경
     }
   },
   themeConfig: {
@@ -23,7 +25,7 @@ export default defineConfig({
         items : [
           {
             text : 'JavaScript',
-            link : '/Front/JS',
+            link : '/Front/JS/',
           },
           {
             text : 'Vue',
@@ -71,14 +73,24 @@ export default defineConfig({
      **************** 왼쪽 사이드바 ****************
      **********************************************/
     sidebar: {
-      /****** sample *******/ 
-      '/sample/': [
+      /****** Front *******/ 
+      '/Front/JS/': [
+        // {text: '시작하기', link: './'},
         {
-          text: '예시',
+          text: '스크립트 문법',
           collapsed: false,
           items: [
-            {text: '작업중1', link: '/guide/ready'},
-            {text: '작업중2', link: '/guide/ready'},
+            {text: '기초', link: './hello'},
+            {text: '클래스', link: './class'},
+            {text: 'try catch', link: './try'},
+            {text: '비동기', link: './await'},
+            { 
+              text: 'ES6', 
+              collapsed: false, 
+              items: [
+                {text: 'spread', link: './es/spread'},
+              ]
+            },
           ]
         },
         {
@@ -89,20 +101,6 @@ export default defineConfig({
             {text: '작업중2', link: '/guide/ready'},
           ]
         },
-        {
-          text: '예시3',
-          collapsed: false,
-          items: [
-            { 
-              text: '예시3-1', 
-              collapsed: false, 
-              items: [
-                {text: '작업중1', link: '/guide/ready'},
-                {text: '작업중2', link: '/guide/ready'},
-              ]
-            },
-          ]
-        }
       ],
       /****** 사이드 프로젝트 기록용용 *******/ 
       '/Side/': [
