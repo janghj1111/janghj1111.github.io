@@ -1,6 +1,6 @@
 # Markdown Extension Examples
 
-Spring MVC
+Spring MVC 
 
 ## Syntax Highlighting
 
