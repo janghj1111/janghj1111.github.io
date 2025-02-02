@@ -80,25 +80,25 @@ export default defineConfig({
           items: [
             {text: '기초', link: './hello'},
             {text: '클래스', link: './class'},
-            {text: 'try catch', link: './try'},
-            {text: '비동기', link: './await'},
-            { 
-              text: 'ES6', 
-              collapsed: false, 
-              items: [
-                {text: 'spread', link: './es/spread'},
-              ]
-            },
+            // {text: 'try catch', link: './try'},
+            // {text: '비동기', link: './await'},
+            // { 
+            //   text: 'ES6', 
+            //   collapsed: false, 
+            //   items: [
+            //     {text: 'spread', link: './es/spread'},
+            //   ]
+            // },
           ]
         },
-        {
-          text: '예시2',
-          collapsed: false,
-          items: [
-            {text: '작업중1', link: '/guide/ready'},
-            {text: '작업중2', link: '/guide/ready'},
-          ]
-        },
+        // {
+        //   text: '예시2',
+        //   collapsed: false,
+        //   items: [
+        //     {text: '작업중1', link: '/guide/ready'},
+        //     {text: '작업중2', link: '/guide/ready'},
+        //   ]
+        // },
       ],
       /****** 사이드 프로젝트 기록용용 *******/ 
       '/Side/': [
