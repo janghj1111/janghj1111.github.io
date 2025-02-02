@@ -77,16 +77,16 @@ export default defineConfig({
           text: '예시',
           collapsed: false,
           items: [
-            { text: '마크다운 예시', link: '/markdown-examples' },
-            { text: 'API 예시', link: '/api-examples' }
+            {text: '작업중1', link: '/guide/ready'},
+            {text: '작업중2', link: '/guide/ready'},
           ]
         },
         {
           text: '예시2',
           collapsed: false,
           items: [
-            { text: '마크다운 예시', link: '/sectionA/sectionA1' },
-            { text: 'API 예시', link: '/sectionA/sectionA2' }
+            {text: '작업중1', link: '/guide/ready'},
+            {text: '작업중2', link: '/guide/ready'},
           ]
         },
         {
@@ -97,8 +97,8 @@ export default defineConfig({
               text: '예시3-1', 
               collapsed: false, 
               items: [
-                {text: '예시3-1-1', link: '/sectionA/sectionA1'},
-                {text: '예시3-1-2', link: '/sectionA/sectionA2'},
+                {text: '작업중1', link: '/guide/ready'},
+                {text: '작업중2', link: '/guide/ready'},
               ]
             },
           ]
@@ -110,7 +110,7 @@ export default defineConfig({
           text: '개인 블로그',
           collapsed: false,
           items: [
-            { text: 'vitePress', link: './blog' },
+            { text: 'vitePress', link: '/guide/ready' },
           ]
         },
       ],
@@ -126,8 +126,8 @@ export default defineConfig({
               text: 'JavaScript', link: './js'
               /* collapsed: false, 
               items: [
-                {text: '예시3-1-1', link: '/sectionA/sectionA1'},
-                {text: '예시3-1-2', link: '/sectionA/sectionA2'},
+                {text: '작업중1', link: '/guide/ready'},
+                {text: '작업중2', link: '/guide/ready'},
               ] */
             },
           ]
