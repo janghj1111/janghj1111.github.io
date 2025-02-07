@@ -2,12 +2,28 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  lang: 'ko-KR',
   title: "Today Jang Learn",
   description: "배우거나 이뤘던 것들을 기록합니다",
   base: '/', // github.io 형식이므로 '/'로 설정
   vite: {
     server: {
       port: 19999, // 원하는 포트 번호로 변경
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            :root {
+              --vp-c-brand: #646cff;
+              --vp-c-brand-light: #747bff;
+              --vp-c-brand-lighter: #9499ff;
+              --vp-c-brand-dark: #535bf2;
+              --vp-c-brand-darker: #454ce1;
+            }
+          `
+        }
+      }
     }
   },
   themeConfig: {
@@ -15,53 +31,38 @@ export default defineConfig({
     /********************************************** 
      **************** 상단 메뉴 ********************
      **********************************************/
+    logo: '/logo.png',
     nav: [
-      // { text: 'Backend', link: '/back/' },
-      { text: 'Project', link: '/Side/' },
-      // { text: 'CodingTest', link: '/vue/' },
-      { text: 'Frontend',
-        items : [
-          {
-            text : 'JavaScript',
-            link : '/Front/JS/',
-          },
-          {
-            text : 'Vue',
-            link : '/Front/Vue',
-          },
-          {
-            text : 'React',
-            link : '/Front/React',
-          },
+      { text: '🏠 Home', link: '/' },
+      { text: '💻 Project', link: '/Side/' },
+      { 
+        text: '🎨 Frontend',
+        items: [
+          { text: 'JavaScript', link: '/Front/JS/' },
+          { text: 'Vue', link: '/Front/Vue' },
+          { text: 'React', link: '/Front/React' },
         ]
       },
-      { text: 'Study',
-        items : [
+      {
+        text: '📚 Study',
+        items: [
           {
-            text : 'Web Dev',
-            items : [
-              {
-                text : 'Web Dev',
-                link : '/Study/WebDev/',
-              },
+            text: '웹 개발',
+            items: [
+              { text: 'Web Dev', link: '/Study/WebDev/' },
             ]
           },
           {
-            text : 'Spring',
-            items : [
-              {
-                text : 'Spring MVC',
-                link : '/Study/Spring/',
-              },
-              {
-                text : 'JPA',
-                link : '/Study/JPA',
-              },
+            text: '백엔드',
+            items: [
+              { text: 'Spring MVC', link: '/Study/Spring/' },
+              { text: 'JPA', link: '/Study/JPA' },
             ]
           },
           {
             text : 'Toss FF',
             link : '/Study/Toss',
+            activeMatch : '/Study/Toss',
           },
         ]
       },
@@ -73,22 +74,18 @@ export default defineConfig({
     sidebar: {
       /****** Front *******/ 
       '/Front/JS/': [
-        // {text: '시작하기', link: './'},
         {
-          text: '스크립트 문법',
-          collapsed: false,
+          text: '📖 JavaScript 가이드',
           items: [
-            {text: '기초', link: './hello'},
-            {text: '클래스', link: './class'},
-            // {text: 'try catch', link: './try'},
-            // {text: '비동기', link: './await'},
-            // { 
-            //   text: 'ES6', 
-            //   collapsed: false, 
-            //   items: [
-            //     {text: 'spread', link: './es/spread'},
-            //   ]
-            // },
+            { text: '시작하기', link: '/Front/JS/', activeMatch: '/Front/JS/' },
+            {
+              text: '핵심 개념',
+              collapsed: false,
+              items: [
+                { text: '기초 문법', link: '/Front/JS/hello', activeMatch: '/Front/JS/hello' },
+                { text: '클래스', link: '/Front/JS/class', activeMatch: '/Front/JS/class' },
+              ]
+            }
           ]
         },
         // {
@@ -100,6 +97,8 @@ export default defineConfig({
         //   ]
         // },
       ],
+
+
       /****** 사이드 프로젝트 기록용용 *******/ 
       '/Side/': [
         {
@@ -144,7 +143,7 @@ export default defineConfig({
         }
       ],
       '/Study/Toss/': [
-        { text: 'Toss FF 시작하기', link: './' },
+        { text: 'Toss FF 시작하기', link: './', activeMatch : '/Study/Toss/', },
         {
           text: '가독성',
           collapsed: false,
@@ -162,8 +161,36 @@ export default defineConfig({
       ],
       '/guide/': [],
     },
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2024-present Jang'
+    },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
+      { icon: 'github', link: 'https://github.com/janghj1111' }
+    ],
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: {
+                buttonText: '검색',
+                buttonAriaLabel: '검색'
+              },
+              modal: {
+                noResultsText: '검색 결과가 없습니다.',
+                resetButtonTitle: '검색어 초기화',
+                footer: {
+                  selectText: '선택',
+                  navigateText: '이동'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  appearance: 'dark',
 })
