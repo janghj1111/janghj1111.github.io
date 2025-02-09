@@ -6,47 +6,149 @@ Vue.js로 단일 페이지 애플리케이션(SPA)을 만들 때 사용되는 �
 
 ## 1. 기본 라우터 설정
 
-### 1.1 라우터 설치
+현재 목표는 아래와 같습니다. 
 
-```bash
-npm install vue-router@4
+::: info 목표
+1. '/sample' url 접근 시 샘플페이지 표시
+2. 페이지들의 라우팅 관리 용이
+3. 네비게이션 가드를 이용한 페이지 접근 제어 
+:::
+
+
+### 기본 라우터 구성
+
+
+
+#### index.js
+
+아래는 기존 index.js입니다.    
+
+```js
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/AboutView.vue'),
+    },
+    {
+      path: '/sample',
+      name: 'sample',
+      component: () => import('../views/SampleView.vue'),
+    },
+  ],
+})
+
+export default router
+
 ```
 
-### 1.2 기본 라우터 구성
+기본적으로 제공되는 router 설정이지만 이렇게 관리되면 발생하는 문제점이 있습니다.
+1. 늘어나는 페이지 수만큼 index.js가 길어지고 복잡해짐.
+2. 페이지 이동 시마다 페이지에 대한 제어가 불가함. (인증이나 에러 핸들링 등등)
 
-프로젝트의 라우터 구성은 다음과 합니다:
+
+
+그래서 프로젝트의 라우터 구성은 다음과 같이 합니다:
 
 ```
 router/
-├─ sampleRoutes.js  // 메인 라우트
+├─ sampleRoutes.js  // 특정 페이지들에 대한 라우트 정보
 ├─ routes.js        // 라우트 목록 관리
 └─ index.js         // 라우터 인스턴스 생성
 ```
 
 
+#### sampleRoutes.js
 
+```js
+
+const defaultPath = '/sample';
+const getMeta = (name) => {
+    return {
+        name : name,
+        layout : 'SampleLayout',
+    }
+}
+const sampleRoutes = {
+    path: defaultPath,
+    meta: getMeta('Sample Home'),
+    children: [
+      {
+        path: defaultPath,
+        name : "SampleHome",
+        component: () => import("@/views/sample/SampleHome.vue"),
+        meta: getMeta('Sample Home1'),
+      },
+    ],
+  };
+export default sampleRoutes;
+``` 
+
+- sample페이지로 이동하기 위한 라우팅 정보들입니다.
+- `getMeta` 함수는 라우트의 메타 정보를 생성하는 헬퍼 함수입니다.
+- 동적 임포트(`import()`)를 사용하여 지연 로딩됩니다.
+
+
+
+#### routes.js
+
+```js
+import sampleRoutes from "./sampleRoutes";
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/HomeView.vue'),
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/AboutView.vue'),
+  },
+]
+
+routes.push(sampleRoutes);
+
+export default routes;
+
+``` 
+
+- 라우터 인스턴스에서 사용될 routes를 따로 빼놓습니다.    
+routes에 추가로 sampleRoutes를 포함시킵니다.    
+
+
+#### 변경된 router/index.js
 
 ```js
 import { createRouter, createWebHistory } from 'vue-router'
+import routes from "./routes";
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/views/HomeView.vue')
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/LoginView.vue')
-    }
-  ]
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes,
 })
 
 export default router
 ```
+
+기존보다 훨씬 간결하게 변경되었습니다.    
+페이지가 늘어나게 되면 index.js가 복잡해질 것 없이 routes 파일에 모든 라우트 정보를 관리하면 됩니다.    
+변경된 index.js에서는 라우터 인스턴스 생성 후 페이지 제어에 필요한 
+**라우터 가드**에 집중할 수 있습니다.
+
+
+<!---------------------------- 0209 jhj ---------------------------->
 
 ## 2. 라우터 가드 활용
 
@@ -166,29 +268,6 @@ const router = createRouter({
 - [Vue Router 4.0 가이드](https://router.vuejs.org/guide/)
 ```
 
-이 문서는 Vue Router의 기본 개념과 실제 프로젝트에서의 활용 사례를 설명하고 있습니다. 필요에 따라 내용을 수정하거나 추가하실 수 있습니다.
-
-현재 프로젝트의 사이드바에 이 문서를 추가하기 위해서는 config.mjs의 sidebar 설정을 참조하시면 됩니다:
-
-
-```101:116:docs/.vitepress/config.mjs
-      '/Front/Vue/': [
-        {
-          text: '📖 Vue 가이드',
-          items: [
-            { text: '시작하기', link: '/Front/Vue/', activeMatch: '/Front/Vue/' },
-            {
-              text: '프로젝트 설정',
-              collapsed: false,
-              items: [
-                { text: 'Store', link: '/Front/Vue/store', activeMatch: '/Front/Vue/store' },
-                { text: 'Router', link: '/Front/Vue/router', activeMatch: '/Front/Vue/router' },
-              ]
-            },
-          ]
-        },
-      ],
-```
 
 
 ## 출처

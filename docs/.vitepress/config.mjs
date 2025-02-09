@@ -61,10 +61,12 @@ export default defineConfig({
             ]
           },
           {
-            text : 'Toss FF',
-            link : '/Study/Toss',
-            activeMatch : '/Study/Toss',
-          },
+            text : '기술 블로그',
+            items : [
+              { text : 'Toss FF', link : '/Study/Toss', activeMatch : '/Study/Toss'},
+              { text : 'Saramin', link : '/Study/Saramin', activeMatch : '/Study/Saramin'},
+            ],
+          }
         ]
       },
     ],
@@ -160,21 +162,34 @@ export default defineConfig({
         }
       ],
       '/Study/Toss/': [
-        { text: 'Toss FF 시작하기', link: './', activeMatch : '/Study/Toss/', },
         {
-          text: '가독성',
-          collapsed: false,
+          text: '🙋‍♂️ Toss Frontend',
           items: [
-            { 
-              text: '가독성1', 
-              collapsed: false, 
+            { text: 'Toss FF 시작하기', link: '/Study/Toss/', activeMatch : '/Study/Toss/', },
+            {
+              text: '가독성',
+              collapsed: false,
               items: [
-                {text: '작업중1', link: '/guide/ready'},
-                {text: '작업중2', link: '/guide/ready'},
+                { 
+                  // text: '가독성1', 
+                  // collapsed: false, 
+                  // items: [
+                  //   {text: '작업중1', link: '/guide/ready'},
+                  //   {text: '작업중2', link: '/guide/ready'},
+                  // ]
+                },
               ]
-            },
+            }
           ]
-        }
+        },
+      ],
+      '/Study/Saramin/': [
+        {
+          text: '🙋‍♂️ Saramin Tech Blog',
+          items: [
+            { text: '시작하기', link: '/Study/Saramin/', activeMatch : '/Study/Saramin/', },
+          ]
+        }, 
       ],
       '/guide/': [],
     },
