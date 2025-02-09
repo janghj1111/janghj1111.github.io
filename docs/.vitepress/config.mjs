@@ -28,19 +28,20 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    /********************************************** 
-     **************** 상단 메뉴 ********************
-     **********************************************/
+
+    /****************************************************************************************************************************
+      상단 메뉴 
+     ****************************************************************************************************************************/
     logo: '/logo.png',
     nav: [
       { text: '🏠 Home', link: '/' },
-      { text: '💻 Project', link: '/Side/' },
+      { text: '💻 Project', link: '/Side/', activeMatch: '/Side/' },
       { 
         text: '🎨 Frontend',
         items: [
-          { text: 'JavaScript', link: '/Front/JS/' },
-          { text: 'Vue', link: '/Front/Vue' },
-          { text: 'React', link: '/Front/React' },
+          { text: 'JavaScript', link: '/Front/JS/', activeMatch: '/Front/JS/' },
+          { text: 'Vue', link: '/Front/Vue/', activeMatch: '/Front/Vue/' },
+          { text: 'React', link: '/Front/React/', activeMatch: '/Front/React/' },
         ]
       },
       {
@@ -49,14 +50,14 @@ export default defineConfig({
           {
             text: '웹 개발',
             items: [
-              { text: 'Web Dev', link: '/Study/WebDev/' },
+              { text: 'Web Dev', link: '/Study/WebDev/', activeMatch: '/Study/WebDev/' },
             ]
           },
           {
             text: '백엔드',
             items: [
-              { text: 'Spring MVC', link: '/Study/Spring/' },
-              { text: 'JPA', link: '/Study/JPA' },
+              { text: 'Spring MVC', link: '/Study/Spring/', activeMatch: '/Study/Spring/' },
+              { text: 'JPA', link: '/Study/JPA', activeMatch: '/Study/JPA' },
             ]
           },
           {
@@ -68,9 +69,9 @@ export default defineConfig({
       },
     ],
 
-    /********************************************** 
-     **************** 왼쪽 사이드바 ****************
-     **********************************************/
+    /****************************************************************************************************************************
+      사이드바
+     ****************************************************************************************************************************/
     sidebar: {
       /****** Front *******/ 
       '/Front/JS/': [
@@ -85,17 +86,33 @@ export default defineConfig({
                 { text: '기초 문법', link: '/Front/JS/hello', activeMatch: '/Front/JS/hello' },
                 { text: '클래스', link: '/Front/JS/class', activeMatch: '/Front/JS/class' },
               ]
+            },
+            {
+              text: '서버 통신',
+              collapsed: false,
+              items: [
+                { text: 'try catch', link: '/Front/JS/try', activeMatch: '/Front/JS/try' },
+                { text: 'await', link: '/Front/JS/await', activeMatch: '/Front/JS/await' },
+              ]
             }
           ]
         },
-        // {
-        //   text: '예시2',
-        //   collapsed: false,
-        //   items: [
-        //     {text: '작업중1', link: '/guide/ready'},
-        //     {text: '작업중2', link: '/guide/ready'},
-        //   ]
-        // },
+      ],
+      '/Front/Vue/': [
+        {
+          text: '📖 Vue 가이드',
+          items: [
+            { text: '시작하기', link: '/Front/Vue/', activeMatch: '/Front/Vue/' },
+            {
+              text: '프로젝트 설정',
+              collapsed: false,
+              items: [
+                { text: 'Store', link: '/Front/Vue/store', activeMatch: '/Front/Vue/store' },
+                { text: 'Router', link: '/Front/Vue/router', activeMatch: '/Front/Vue/router' },
+              ]
+            },
+          ]
+        },
       ],
 
 
