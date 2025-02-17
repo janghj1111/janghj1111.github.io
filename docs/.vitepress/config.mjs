@@ -35,6 +35,7 @@ export default defineConfig({
     logo: '/logo.png',
     nav: [
       { text: '🏠 Home', link: '/' },
+      { text: '📝 Work Log', link: '/Work/', activeMatch: '/Work/' },
       { text: '💻 Project', link: '/Side/', activeMatch: '/Side/' },
       { 
         text: '🎨 Frontend',
@@ -42,6 +43,14 @@ export default defineConfig({
           { text: 'JavaScript', link: '/Front/JS/', activeMatch: '/Front/JS/' },
           { text: 'Vue', link: '/Front/Vue/', activeMatch: '/Front/Vue/' },
           { text: 'React', link: '/Front/React/', activeMatch: '/Front/React/' },
+        ]
+      },
+      {
+        text: '🛠️ Backend',
+        items: [
+          { text: 'Java', link: '/Study/Java/', activeMatch: '/Study/Java/' },
+          { text: 'Spring', link: '/Study/Spring/', activeMatch: '/Study/Spring/' },
+          { text: 'Node', link: '/Study/Node/', activeMatch: '/Study/Node/' },
         ]
       },
       {
@@ -75,6 +84,41 @@ export default defineConfig({
       사이드바
      ****************************************************************************************************************************/
     sidebar: {
+      /****** Work *******/ 
+      '/Work/': [
+        { text: '📝 Work Log', link: '/Work/', activeMatch: '/Work/' },
+        { text: '형상관리', link: '/Work/Git/', activeMatch: '/Work/Git/' },
+        { text: '리눅스', link: '/Work/Linux/', activeMatch: '/Work/Linux/' },
+        {
+          text: 'FRONT',
+          collapsed: false,
+          items: [
+            { text: 'HTML/CSS', link: './css' },
+            { 
+              text: 'JavaScript', link: './js'
+              /* collapsed: false, 
+              items: [
+                {text: '작업중1', link: '/guide/ready'},
+                {text: '작업중2', link: '/guide/ready'},
+              ] */
+            },
+          ]
+        },
+        {
+          text: 'BACK',
+          collapsed: false,
+          items: [
+            { 
+              text: 'Node', 
+              collapsed: false, 
+              items: [
+                {text: '작업중1', link: '/guide/ready'},
+                {text: '작업중2', link: '/guide/ready'},
+              ]
+            },
+          ]
+        }
+      ],
       /****** Front *******/ 
       '/Front/JS/': [
         {
