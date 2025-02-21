@@ -89,6 +89,7 @@ export default defineConfig({
         { text: '📝 Work Log', link: '/Work/', activeMatch: '/Work/' },
         { text: '형상관리', link: '/Work/Git/', activeMatch: '/Work/Git/' },
         { text: '리눅스', link: '/Work/Linux/', activeMatch: '/Work/Linux/' },
+        { text: 'Vite', link: '/Work/Vite/', activeMatch: '/Work/Vite/' },
         {
           text: 'FRONT',
           collapsed: false,
