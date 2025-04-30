@@ -56,7 +56,7 @@ git push -u origin main
 
 ```javascript:docs/.vitepress/config.mjs
 export default defineConfig({
-  title: "Today Jang Learn",
+  title: "Today Jang Learned",
   description: "배우거나 이뤘던 것들을 기록합니다",
   
   // GitHub Pages 배포를 위한 base 설정
@@ -71,12 +71,12 @@ export default defineConfig({
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
     // Open Graph
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'Today Jang Learn' }],
+    ['meta', { property: 'og:title', content: 'Today Jang Learned' }],
     ['meta', { property: 'og:description', content: '배우거나 이뤘던 것들을 기록합니다' }],
     ['meta', { property: 'og:image', content: 'https://janghyun00.github.io/og-image.jpg' }],
     // Twitter Card
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'Today Jang Learn' }],
+    ['meta', { name: 'twitter:title', content: 'Today Jang Learned' }],
     ['meta', { name: 'twitter:description', content: '배우거나 이뤘던 것들을 기록합니다' }]
   ],
 

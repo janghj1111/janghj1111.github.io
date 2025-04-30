@@ -3,12 +3,12 @@
 layout: home
 
 hero:
-  name: "Today Jang Learn"
+  name: "Today Jang Learned"
   text: "배우거나 이뤘던 것을 기록합니다"
   tagline: 개발 기술 일지 블로그
   image:
     src: /logo.png
-    alt: Today Jang Learn
+    alt: Today Jang Learned
   actions:
     - theme: brand
       text: Markdown Examples
